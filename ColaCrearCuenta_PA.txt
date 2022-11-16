@@ -1,0 +1,32 @@
+{
+  "Version": "2008-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "Service": "sns.amazonaws.com"
+      },
+      "Action": "sqs:SendMessage",
+      "Resource": "arn:aws:sqs:us-east-1:021662273041:ColaCrearCuenta",
+      "Condition": {
+        "ArnEquals": {
+          "aws:SourceArn": "arn:aws:sns:us-east-1:021662273041:TemaNuevaCuenta"
+        }
+      }
+    },
+    {
+      "Sid": "topic-subscription-arn:aws:sns:us-east-1:021662273041:TemaNuevaCuenta",
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "*"
+      },
+      "Action": "SQS:SendMessage",
+      "Resource": "arn:aws:sqs:us-east-1:021662273041:ColaCrearCuenta",
+      "Condition": {
+        "ArnLike": {
+          "aws:SourceArn": "arn:aws:sns:us-east-1:021662273041:TemaNuevaCuenta"
+        }
+      }
+    }
+  ]
+}
