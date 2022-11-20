@@ -1,0 +1,32 @@
+{
+    "Version": "2008-10-17",
+    "Statement": [
+      {
+        "Effect": "Allow",
+        "Principal": {
+          "Service": "sns.amazonaws.com"
+        },
+        "Action": "sqs:SendMessage",
+        "Resource": "arn:aws:sqs:us-east-1:167952863946:ColaNuevaRecarga",
+        "Condition": {
+          "ArnEquals": {
+            "aws:SourceArn": "arn:aws:sns:us-east-1:167952863946:TemaNuevaRecarga"
+          }
+        }
+      },
+      {
+        "Sid": "topic-subscription-arn:aws:sns:us-east-1:167952863946:TemaNuevaRecarga",
+        "Effect": "Allow",
+        "Principal": {
+          "AWS": "*"
+        },
+        "Action": "SQS:SendMessage",
+        "Resource": "arn:aws:sqs:us-east-1:167952863946:ColaNuevaRecarga",
+        "Condition": {
+          "ArnLike": {
+            "aws:SourceArn": "arn:aws:sns:us-east-1:167952863946:TemaNuevaRecarga"
+          }
+        }
+      }
+    ]
+  }
