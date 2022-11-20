@@ -18,9 +18,11 @@ def lambda_handler(event, context):
     recarga = {
         'tenant_id': tenant_id,
         'recarga_id': recarga_id,
-        'tarjeta_id': tarjeta_id,
-        'fecha_hora': fecha_hora,
-        'monto': monto
+        'recarga_datos':{
+            'tarjeta_id': tarjeta_id,
+            'fecha_hora': fecha_hora,
+            'monto': monto
+        }
     }
 
     # Publicar en SNS
