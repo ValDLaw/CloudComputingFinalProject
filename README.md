@@ -22,7 +22,7 @@ Lambda: CrearCuenta
 DynamoDB: usuario
 - Contiene los registros de todos los usuarios.
 
-### Revisar si el carnet ha vencido
+## Revisar si el carnet ha vencido
 
 EventBridge: RevisarCuenta
 - Llama al Lambda (RevisarCuenta) cada día.
