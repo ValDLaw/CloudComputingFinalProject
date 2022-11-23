@@ -38,7 +38,7 @@ def lambda_handler(event, context):
     items_u = response_u['Items']
     
     
-    registros = dynamodb.Table('registros')
+    registros = dynamodb.Table('registro')
     response_r = registros.query(
         KeyConditionExpression=Key('tenant_id').eq('SUNEDU')
     )

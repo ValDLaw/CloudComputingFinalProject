@@ -41,15 +41,15 @@ def lambda_handler(event, context):
     dynamodb = boto3.resource('dynamodb')
     registros = dynamodb.Table('registro')
 
-    if(tipo == 'Universitario'):
+    if(tipo == 'universitario'):
         responseT= registros.query(
             KeyConditionExpression=Key('tenant_id').eq('SUNEDU')
         )
-    elif(tipo == 'Discapacitado'):
+    elif(tipo == 'discapacitado'):
         responseT= registros.query(
             KeyConditionExpression=Key('tenant_id').eq('MINSA')
         )
-    elif(tipo == 'General'):
+    elif(tipo == 'general'):
         responseT= registros.query(
             KeyConditionExpression=Key('tenant_id').eq('RENIEC')
         )
