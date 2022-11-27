@@ -14,12 +14,13 @@ def lambda_handler(event, context):
         'tarjeta_id': Message['tarjeta_id'],
         'dni': Message['dni'],
         'tipo': Message['tipo'],
-        'cuenta': Message['cuenta']
+        'cuenta': Message['cuenta'],
+        'saldo' : 0
     }
     print(user) # Revisar en CloudWatch
     response = table.put_item(Item=user)
     # Salida (json)
     return {
-        'statusCode': 200,
-        'response': response
+    'statusCode': 200,
+    'response': response
     }
